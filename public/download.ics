@@ -1,0 +1,11 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+URL:https://www.universe.com/events/65495d96687284002cf87cb3
+DTSTART;TZID="America/Denver":20241009T090000
+DTEND;TZID="America/Denver":20241011T170000
+SUMMARY:Permissionless III
+DESCRIPTION:Pack your bags\, anon — we're heading west! Join us in the beautiful Salt Lake City for the third installment of Permissionless. Come for the alpha\, stay for the fresh air. Permissionless III promises unforgettable panels\, killer networking opportunities\, and mountains of fun!\n
+LOCATION:90 S W Temple St, 90 S W Temple St, Salt Lake City, UT 84101, USA
+END:VEVENT
+END:VCALENDAR
