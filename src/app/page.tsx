@@ -1,8 +1,17 @@
-import { getAllProperties } from './utils'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
+import { getAllProperties } from './utils'
 
 export default async function Home() {
+  const supabase = createServerComponentClient({ cookies })
+  const { data } = await supabase.auth.getSession()
+  if (!data.session?.user) {
+    redirect('/login')
+  }
+
   const properties = await getAllProperties()
   return (
     <main className='flex min-h-screen flex-col items-center justify-start m-4 '>

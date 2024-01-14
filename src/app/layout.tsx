@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Link from 'next/link'
 import Image from 'next/image'
+import Logout from '@/app/_components/Logout'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <header className='flex flex-col justify-center items-center m-4 '>
+        <header className='flex justify-between items-center m-4 '>
           <div className='mb-4'>
             <Link href='/'>
               <Image
@@ -35,6 +36,7 @@ export default function RootLayout({
               Home
             </Link>
             <Link href='/about'>About</Link>
+            <Logout />
           </div>
         </header>
         {children}

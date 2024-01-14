@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
 }
 
 datasource db {
@@ -8,22 +9,43 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model loan {
-  id            BigInt    @id @default(autoincrement())
+model User {
+  id        String   @id @db.Uuid
+  createdAt DateTime @default(now())
+  name      String?
+  role      Role     @default(USER)
+  loan      Lendor[]
+}
+
+model Loan {
+  id            Int       @id @default(autoincrement())
   created_at    DateTime  @default(now()) @db.Timestamptz(6)
   property_id   BigInt?
   interest_rate Decimal?  @db.Decimal
   loan_amount   Decimal?  @db.Decimal
   term_months   Decimal?  @db.Decimal
   start_date    DateTime? @db.Date
-  property      property? @relation(fields: [property_id], references: [property_id], onDelete: NoAction, onUpdate: NoAction)
+  user          Lendor[]
 }
 
-model property {
-  property_id BigInt   @id @default(autoincrement())
+model Lendor {
+  userId String @db.Uuid
+  loanId Int
+  loan   Loan   @relation(fields: [loanId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
+
+  @@id([userId, loanId])
+}
+
+model Property {
+  property_id Int      @id(map: "property_pkey") @unique(map: "property_property_id_key") @default(autoincrement())
   created_at  DateTime @default(now()) @db.Timestamptz(6)
   img_url     String
   address     String
   description String
-  loan        loan[]
+}
+
+enum Role {
+  ADMIN
+  USER
 }
