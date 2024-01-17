@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <header className='flex justify-between items-center m-4 '>
+        <header className='flex justify-between items-center mx-8 my-4 '>
           <div className='mb-4'>
             <Link href='/'>
               <Image
@@ -36,6 +36,8 @@ export default function RootLayout({
               Home
             </Link>
             <Link href='/about'>About</Link>
+          </div>
+          <div className='font-semibold '>
             <Logout />
           </div>
         </header>
