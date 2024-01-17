@@ -22,7 +22,7 @@ export default async function Home() {
           <div key={property_id} className=' border m-4 rounded-md max-w-sm '>
             <div className='relative w-full h-80 '>
               {img_url && address && (
-                <Link href={`/property/${property_id}`}>
+                <Link href={`/properties/${property_id}`}>
                   <Image
                     src={img_url}
                     alt={`Image of ${address}`}

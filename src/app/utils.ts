@@ -6,8 +6,10 @@ export const getAllProperties = cache(async () => {
   return properties
 }) 
 
-export const getProperty = cache(async (property_id: string) => {
-  const property = await prisma.property.findUnique({ where: { property_id } })
+export const getProperty = cache(async (id: string) => {
+  const property = await prisma.property.findUnique({ where:  {
+    property_id: id
+  }  })
   return property
 })
 
