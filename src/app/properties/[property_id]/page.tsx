@@ -43,6 +43,8 @@ export default async function Page({
 
   return (
     <main className='flex min-h-screen flex-col items-center justify-start m-4'>
+      <h1 className='text-5xl font-bold mb-4'>{address}</h1>
+
       <div className='relative' style={{ width: 700, height: 500 }}>
         <Image
           src={img_url}
@@ -52,7 +54,6 @@ export default async function Page({
           className='rounded-sm pb-4 w-full h-full object-contain '
         />
       </div>
-      <h1 className='text-5xl font-bold mb-4'>{address}</h1>
       <div className='flex'>
         <div className='m-2'>
           <p className='text-md'>{description}</p>

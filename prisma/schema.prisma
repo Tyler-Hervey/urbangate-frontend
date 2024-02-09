@@ -18,32 +18,43 @@ model User {
 }
 
 model Loan {
-  id            String    @id @default(uuid())
-  created_at    DateTime  @default(now()) @db.Timestamptz(6)
-  property_id   BigInt?
-  interest_rate Decimal?  @db.Decimal
-  loan_amount   Decimal?  @db.Decimal
-  term_months   Decimal?  @db.Decimal
-  start_date    DateTime? @db.Date
-  user          Lendor[]
+  loan_id                     String    @id(map: "loan_pkey") @unique(map: "loan_loan_id_key") @default(uuid()) @db.Uuid
+  created_at                  DateTime  @default(now()) @db.Timestamptz(6)
+  property_id                 String    @db.Uuid
+  property                    Property  @relation(fields: [property_id], references: [property_id])
+  loan_amount                 Decimal?  @db.Decimal
+  term_months                 Decimal?  @db.Decimal
+  start_date                  DateTime? @db.Date
+  maturity_date               DateTime? @db.Date
+  extendable                  Boolean?  @default(true)
+  number_of_extension_options Int?      @default(3)
+  number_of_extensions_used   Int?      @default(0)
+  loan_type                   String?
+  loan_to_arv                 Decimal?  @db.Decimal
+  loan_to_cost                Decimal?  @db.Decimal
+  loan_to_as_is_value         Decimal?  @db.Decimal
+  yield                       Decimal?  @db.Decimal
+  user                        Lendor[]
 }
 
 model Lendor {
   userId String @default(uuid())
-  loanId String @default(uuid())
-  loan   Loan   @relation(fields: [loanId], references: [id])
+  loanId String @default(uuid()) @db.Uuid
+  loan   Loan   @relation(fields: [loanId], references: [loan_id])
   user   User   @relation(fields: [userId], references: [id])
 
   @@id([userId, loanId])
 }
 
 model Property {
-  property_id String   @id(map: "property_pkey") @unique(map: "property_property_id_key") @default(uuid()) @db.Uuid
-  created_at  DateTime @default(now()) @db.Timestamptz(6)
-  img_url     String
-  address     String
-  slug        String   @unique
-  description String
+  property_id   String   @id(map: "property_pkey") @unique(map: "property_property_id_key") @default(uuid()) @db.Uuid
+  property_type String
+  created_at    DateTime @default(now()) @db.Timestamptz(6)
+  img_url       String
+  address       String
+  slug          String   @unique
+  description   String
+  loans         Loan[]
 }
 
 enum Role {
