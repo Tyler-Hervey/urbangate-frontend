@@ -15,16 +15,16 @@ export default async function Home() {
   const properties = await getAllProperties()
 
   return (
-    <main className='flex min-h-screen flex-col items-center justify-start m-4'>
+    <main className='flex flex-col items-center m-4'>
       <h1 className='text-5xl font-bold mb-4'>Properties</h1>
       <div className='flex'>
-        {properties.map(({ property_id, address, img_url, description }) => (
+        {properties.map(({ property_id, address, images, description }) => (
           <div key={property_id} className=' border m-4 rounded-md max-w-sm '>
-            <div className='relative w-full h-80 '>
-              {img_url && address && (
+            <div className='relative w-full h-80'>
+              {images && address && (
                 <Link href={`/properties/${property_id}`}>
                   <Image
-                    src={img_url}
+                    src={images[0]}
                     alt={`Image of ${address}`}
                     fill={true}
                     className='rounded-sm pb-4 object-cover '

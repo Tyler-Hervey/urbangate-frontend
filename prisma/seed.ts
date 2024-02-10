@@ -8,8 +8,12 @@ async function seedProperties() {
     create: {
       property_id: 'BBC5F0C1-FD56-4C89-BC03-4B56288F589D',
       property_type: 'Single Family',
-      img_url:
+      images: [
         'https://xhzcrshkgefgsatjhabk.supabase.co/storage/v1/object/public/images/home_1.jpeg',
+        'https://xhzcrshkgefgsatjhabk.supabase.co/storage/v1/object/public/images/placeholder.svg',
+        'https://xhzcrshkgefgsatjhabk.supabase.co/storage/v1/object/public/images/placeholder.svg',
+        'https://xhzcrshkgefgsatjhabk.supabase.co/storage/v1/object/public/images/placeholder.svg',
+      ],
       address: '1234 Main St',
       slug: '1234-main-st',
       description:
@@ -22,8 +26,13 @@ async function seedProperties() {
     create: {
       property_id: 'fb12b279-edd9-4007-b40b-e4357d275ab2',
       property_type: 'Single Family',
-      img_url:
+      images: [
         'https://xhzcrshkgefgsatjhabk.supabase.co/storage/v1/object/public/images/home_2.jpeg',
+        'https://xhzcrshkgefgsatjhabk.supabase.co/storage/v1/object/public/images/placeholder.svg',
+        'https://xhzcrshkgefgsatjhabk.supabase.co/storage/v1/object/public/images/placeholder.svg',
+        'https://xhzcrshkgefgsatjhabk.supabase.co/storage/v1/object/public/images/placeholder.svg',
+        'https://xhzcrshkgefgsatjhabk.supabase.co/storage/v1/object/public/images/placeholder.svg',
+      ],
       address: '1234 Washington St',
       slug: '1234-washington-st',
       description:
@@ -36,8 +45,13 @@ async function seedProperties() {
     create: {
       property_id: 'e98672ca-5bef-47c7-8125-56c947e25c86',
       property_type: 'Single Family',
-      img_url:
+      images: [
         'https://xhzcrshkgefgsatjhabk.supabase.co/storage/v1/object/public/images/home_3.jpeg',
+        'https://xhzcrshkgefgsatjhabk.supabase.co/storage/v1/object/public/images/placeholder.svg',
+        'https://xhzcrshkgefgsatjhabk.supabase.co/storage/v1/object/public/images/placeholder.svg',
+        'https://xhzcrshkgefgsatjhabk.supabase.co/storage/v1/object/public/images/placeholder.svg',
+        'https://xhzcrshkgefgsatjhabk.supabase.co/storage/v1/object/public/images/placeholder.svg',
+      ],
       address: '1234 Jefferson St',
       slug: '1234-jefferson-st',
       description:

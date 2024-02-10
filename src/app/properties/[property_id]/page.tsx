@@ -4,6 +4,8 @@ import { redirect } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { getProperty } from '@/app/utils'
+import { PropertyCarousel } from '../../../../components/carousel/propertyCarousel'
+import { EmblaOptionsType } from 'embla-carousel'
 
 // fix types to use imageLoader
 // const imageLoader = ({
@@ -39,21 +41,15 @@ export default async function Page({
     )
   }
 
-  const { address, img_url, description } = property
+  const { address, images, description } = property
+  const OPTIONS: EmblaOptionsType = {}
+  const SLIDE_COUNT = images.length
+  const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
   return (
     <main className='flex min-h-screen flex-col items-center justify-start m-4'>
-      <h1 className='text-5xl font-bold mb-4'>{address}</h1>
-
-      <div className='relative' style={{ width: 700, height: 500 }}>
-        <Image
-          src={img_url}
-          alt={`Image of ${address}`}
-          fill={true}
-          priority={true}
-          className='rounded-sm pb-4 w-full h-full object-contain '
-        />
-      </div>
+      <h1 className='text-3xl font-bold mb-4'>{address}</h1>
+      <PropertyCarousel slides={SLIDES} options={OPTIONS} images={images} />
       <div className='flex'>
         <div className='m-2'>
           <p className='text-md'>{description}</p>
