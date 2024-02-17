@@ -42,7 +42,7 @@ export function PropertyCarousel(props: PropType) {
   }, [emblaMainApi, onSelect])
 
   return (
-    <div className='embla'>
+    <div className='embla min-w-full'>
       <div className='embla__viewport' ref={emblaMainRef}>
         <div className='embla__container'>
           {slides.map((index) => (

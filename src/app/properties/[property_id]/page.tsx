@@ -1,12 +1,10 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-import Image from 'next/image'
-import Link from 'next/link'
-import { getProperty } from '@/app/utils'
+import { getProperty, getLoan } from '@/app/utils'
 import { PropertyCarousel } from '../../../../components/carousel/propertyCarousel'
 import { EmblaOptionsType } from 'embla-carousel'
-
+import Loan from '../../../../components/loan/loan'
 // fix types to use imageLoader
 // const imageLoader = ({
 //   src,
@@ -32,7 +30,8 @@ export default async function Page({
   }
 
   const property = await getProperty(params.property_id)
-
+  const loan = await getLoan(params.property_id)
+  console.log('loan', loan)
   if (!property) {
     return (
       <main className='flex min-h-screen flex-col items-center justify-start m-4'>
@@ -42,14 +41,16 @@ export default async function Page({
   }
 
   const { address, images, description } = property
+
   const OPTIONS: EmblaOptionsType = {}
   const SLIDE_COUNT = images.length
   const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
   return (
-    <main className='flex min-h-screen flex-col items-center justify-start m-4'>
+    <main className='flex min-h-screen flex-col items-center justify-start m-4 overflow-x-hidden'>
       <h1 className='text-3xl font-bold mb-4'>{address}</h1>
       <PropertyCarousel slides={SLIDES} options={OPTIONS} images={images} />
+      <Loan params={params} />
       <div className='flex'>
         <div className='m-2'>
           <p className='text-md'>{description}</p>

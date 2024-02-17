@@ -18,22 +18,22 @@ model User {
 }
 
 model Loan {
-  loan_id                     String    @id(map: "loan_pkey") @unique(map: "loan_loan_id_key") @default(uuid()) @db.Uuid
-  created_at                  DateTime  @default(now()) @db.Timestamptz(6)
-  property_id                 String    @db.Uuid
-  property                    Property  @relation(fields: [property_id], references: [property_id])
-  loan_amount                 Decimal?  @db.Decimal
-  term_months                 Decimal?  @db.Decimal
-  start_date                  DateTime? @db.Date
-  maturity_date               DateTime? @db.Date
-  extendable                  Boolean?  @default(true)
-  number_of_extension_options Int?      @default(3)
-  number_of_extensions_used   Int?      @default(0)
-  loan_type                   String?
-  loan_to_arv                 Decimal?  @db.Decimal
-  loan_to_cost                Decimal?  @db.Decimal
-  loan_to_as_is_value         Decimal?  @db.Decimal
-  yield                       Decimal?  @db.Decimal
+  loan_id                     String   @id(map: "loan_pkey") @unique(map: "loan_loan_id_key") @default(uuid()) @db.Uuid
+  created_at                  DateTime @default(now()) @db.Timestamptz(6)
+  property_id                 String   @unique @db.Uuid
+  property                    Property @relation(fields: [property_id], references: [property_id])
+  loan_amount                 Float
+  term_months                 Float
+  start_date                  DateTime @db.Date
+  maturity_date               DateTime @db.Date
+  extendable                  Boolean? @default(true)
+  number_of_extension_options Int?     @default(3)
+  number_of_extensions_used   Int?     @default(0)
+  loan_type                   String
+  loan_to_arv                 Float
+  loan_to_cost                Float
+  loan_to_as_is_value         Float
+  yield                       Float
   user                        Lendor[]
 }
 

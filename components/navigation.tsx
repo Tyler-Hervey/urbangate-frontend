@@ -1,6 +1,5 @@
-import react from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import Link from 'next/link'
+import Image from 'next/image'
 const Navigation = () => {
   return (
     <section>
@@ -10,7 +9,7 @@ const Navigation = () => {
       <Link href='/'>Home</Link>
       <Link href='/about'>About</Link>
     </section>
-  );
-};
+  )
+}
 
-export default Navigation;
+export default Navigation
